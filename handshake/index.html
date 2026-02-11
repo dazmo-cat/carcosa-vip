@@ -5,26 +5,63 @@
     <title>TERMINAL_ACCESS // HANDSHAKE</title>
     <style>
         body { background-color: #0a0a0a; color: #00ff00; font-family: 'Courier New', Courier, monospace; padding: 50px; text-shadow: 0 0 5px #00ff00; }
-        .terminal { max-width: 700px; margin: auto; border: 1px solid #00ff00; padding: 20px; box-shadow: 0 0 20px rgba(0, 255, 0, 0.2); }
-        .prompt { color: #f1c40f; } /* Yellow for the specific Carcosa prompt */
+        .terminal { max-width: 700px; margin: auto; border: 1px solid #00ff00; padding: 20px; box-shadow: 0 0 20px rgba(0, 255, 0, 0.2); position: relative; }
+        .prompt { color: #f1c40f; } 
         .cursor { display: inline-block; width: 10px; height: 1.2em; background-color: #00ff00; animation: blink 1s infinite; vertical-align: middle; }
         @keyframes blink { 0%, 50% { opacity: 1; } 50.1%, 100% { opacity: 0; } }
-        a { color: #f1c40f; text-decoration: none; border: 1px solid #f1c40f; padding: 2px 5px; font-size: 0.8em; }
-        a:hover { background: #f1c40f; color: #000; }
+        a { color: #f1c40f; text-decoration: none; border: 1px dotted #f1c40f; padding: 2px 5px; font-size: 0.8em; }
+        a:hover { background: #f1c40f; color: #000; box-shadow: 0 0 10px #f1c40f; }
+        .warning { color: #ff0000; font-weight: bold; text-transform: uppercase; border: 1px solid #ff0000; padding: 5px; margin-top: 10px; display: inline-block; }
+        
+        /* Custom Pop-up Styling */
+        #nya-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #000;
+            border: 2px solid #f1c40f;
+            padding: 20px;
+            z-index: 1000;
+            box-shadow: 0 0 30px #f1c40f;
+            text-align: center;
+        }
+        #nya-popup h2 { color: #f1c40f; font-size: 1em; margin-top: 0; border-bottom: 1px solid #f1c40f; }
+        #nya-popup p { color: #fff; margin-bottom: 20px; }
+        #nya-popup button { background: #f1c40f; color: #000; border: none; padding: 5px 15px; font-family: inherit; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
     <div class="terminal">
         <p>> INITIALIZING HANDSHAKE PROTOCOL...</p>
-        <p>> KERNEL: CARCOSA_OS_v0.9</p>
-        <p>> USER_STATUS: <span style="color: red;">UNAUTHORIZED</span></p>
+        <p>> KERNEL: CARCOSA_OS_v0.9 [VECTOR ANALYTICAL DISTRO]</p>
+        <p>> USER_STATUS: <span class="warning">UNAUTHORIZED</span></p>
         <p>> ---------------------------------------</p>
-        <p>You have reached a restricted node. This directory is monitored by <strong>Admin_Denons</strong>.</p>
-        <p>If you arrived here by following the "Yellow Fragments," please disconnect your local hardware immediately. The data you are seeking has been <span class="prompt">PRUNED</span>.</p>
+        <p>Restricted Node Access. Managed by <strong>Admin_Denons</strong>.</p>
+        <p>Warning: Trace-route initiated. Following the "Yellow Fragments" is a breach of your employment contract. The data you are seeking has been <span class="prompt">PRUNED</span>.</p>
         <br>
         <p class="prompt">LOGIN: _ <span class="cursor"></span></p>
         <br>
-        <p style="font-size: 0.7em; color: #666;">[SYSTEM ERROR: Metadata for "SUE.log" found in temporary cache. Access Denied.]</p>
+        <p style="font-size: 0.7em; color: #444;">[SYSTEM ERROR: Metadata for <a href="#">"SUE.log"</a> found in temporary cache. Permission level: NULL.]</p>
+        <p style="font-size: 0.6em; color: #333; margin-top: 20px;">PROPERTY OF VECTOR ANALYTICAL. DISCONNECT NOW.</p>
     </div>
+
+    <div id="nya-popup">
+        <h2>INTRUSION DETECTED: Nya</h2>
+        <p>"Naughty, naughty... you shouldn't be here right now!"</p>
+        <button onclick="closePopup()">DISCONNECT</button>
+    </div>
+
+    <script>
+        // Trigger the pop-up after a 2 second delay
+        setTimeout(() => {
+            document.getElementById('nya-popup').style.display = 'block';
+        }, 2000);
+
+        function closePopup() {
+            document.getElementById('nya-popup').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
